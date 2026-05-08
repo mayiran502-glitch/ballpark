@@ -132,3 +132,6 @@ scripts/ipynb_to_myst.py
 # Cursor / SpecStory
 .cursor*
 .specstory*/
+
+# Local toolchain binaries (e.g. portable pandoc for reproducible builds)
+.tools/

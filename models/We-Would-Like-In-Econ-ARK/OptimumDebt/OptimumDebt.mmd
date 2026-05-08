@@ -1,0 +1,20 @@
+# OptimumDebt — Model A perch graph (Aiyagari & McGrattan 1998)
+
+Standalone **Mermaid** diagram for the three-perch household stage in
+[`dolo-plus-draft.yaml`](dolo-plus-draft.yaml). Open in the [Mermaid Live Editor](https://mermaid.live)
+or embed this fenced block in any Markdown file.
+
+Model B reuses the same perch skeleton with two controls; see [`bellman-excerpt.md`](bellman-excerpt.md) §10.
+
+```mermaid
+flowchart TB
+  Ap[["Arrival perch prec<br/>prestate a_tilde, productivity e"]]
+  Dp[["Decision perch o<br/>cash-on-hand m_tilde, e<br/>control c_tilde"]]
+  Cp[["Continuation perch succ<br/>poststate a_prime, e"]]
+
+  Ap -->|"arvl_to_dcsn:<br/>m_tilde = (1+r)*a_tilde + w_tilde*e - tau"| Dp
+  Dp -->|"dcsn_to_cntn:<br/>a_prime = (m_tilde - c_tilde)/(1+g)"| Cp
+
+  Cp -.->|"Backward mover B<br/>(Bellman + envelope)"| Dp
+  Dp -.->|"Forward mover I<br/>expect over next e given Pi"| Ap
+```

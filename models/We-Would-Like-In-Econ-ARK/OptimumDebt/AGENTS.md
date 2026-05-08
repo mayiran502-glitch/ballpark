@@ -15,7 +15,7 @@
 1. **Read first:** [`bellman-excerpt.md`](bellman-excerpt.md) — the product of the Matsya iteration loop. **§§1–9 (Model A) are the authoritative recursive statement for this item** and supersede `OptimumDebt_summary.ipynb` per `CONTRIBUTING.md`. §10 (Model B) is reference documentation only — it is **out of scope** for the YAML and the verification claims (see "Scope of this ballpark item" above).
 2. **Formal YAML:** [`dolo-plus-draft.yaml`](dolo-plus-draft.yaml) — one stage, Model A only. All unresolved features flagged inline.
 3. **Supporting exposition:** [`OptimumDebt_summary.ipynb`](OptimumDebt_summary.ipynb) §II.A / §II.B for non-technical framing; §III for the solver-level penalty method (kept out of the formal DP).
-4. **Paper source for AI ingestion:** *Not yet committed* — see next-tasks item 3 below. Pandoc the PDF into `OptimumDebt.mmd` and prefer that over the PDF for AI ingestion.
+4. **Formalized asset layer (committed):** [`OptimumDebt.pdf`](OptimumDebt.pdf) is a PDF rendering of [`bellman-excerpt.md`](bellman-excerpt.md). [`OptimumDebt.mmd`](OptimumDebt.mmd) is Mermaid source for the Model A three-perch graph (same naming convention as [`dolo-plus-draft.yaml`](dolo-plus-draft.yaml)). After edits to `bellman-excerpt.md`, regenerate the PDF with [`build-bellman-pdf.sh`](build-bellman-pdf.sh) (needs `pandoc` + `xelatex`; preamble [`OptimumDebt_pdf_header.tex`](OptimumDebt_pdf_header.tex) supplies `\coloneqq` and AMS symbols). **Optional future:** Pandoc the *published* JME PDF into a separate markdown file (e.g. `OptimumDebt_paper.md`) if staff want verbatim paper text for AI ingestion—that file is *not* the perch diagram.
 
 ## Formalization status
 
@@ -24,6 +24,8 @@
 - [`dolo-plus-draft.yaml`](dolo-plus-draft.yaml): **committed** (Model A interior stage only).
 - [`verification.md`](verification.md): **committed** (verifies against the published paper, with section/equation cites).
 - [`matsya-session.txt`](matsya-session.txt): **committed** — session name is `emma-ballpark-topics2026`.
+- [`OptimumDebt.pdf`](OptimumDebt.pdf): **committed** — Formalized-tier polished bellman excerpt (compiled from `bellman-excerpt.md`).
+- [`OptimumDebt.mmd`](OptimumDebt.mmd): **committed** — perch-graph diagram (Mermaid) aligned with Model A YAML perch keys.
 
 ## Known model features requiring attention in a formalization pass
 
@@ -38,9 +40,9 @@
 
 1. **(Out-of-scope follow-up) Encode Model B as a second stage in `dolo-plus-draft.yaml`** — parallel to the existing Model A stage, with controls $(\tilde{c}, l)$, the labor-income budget, the intratemporal FOC, and an EGM InvEuler using the composite marginal utility. See `bellman-excerpt.md` §§10.5–10.8 for the specification. **Not required to clear the Formalized gate for this item** under the declared Model-A-only scope; if a future contributor wants the paper's benchmark covered as well, this is the canonical entry point.
 2. **Add the Tauchen discretization of the AR(1) productivity process** as a concrete $\Pi$ in the YAML's `calibration:` block (or as a separate `processes/` file), grounded in paper Sec. IV (p. 458). This removes the one remaining symbolic element.
-3. **Commit `OptimumDebt.pdf` and `OptimumDebt.mmd`** (Pandoc-converted markdown) to the item folder. `self.bib` is present but the paper artifact is not; this is a Primer-checklist gap per `CONTRIBUTING.md`.
+3. **Optional — ingest published paper text for AI:** Pandoc or OCR→Markdown from the JME PDF into something like `OptimumDebt_paper.md`. Distinct from `OptimumDebt.mmd` (perch diagram) and `OptimumDebt.pdf` (bellman excerpt render).
 4. **Matsya-session rename (optional).** The committed session `emma-ballpark-topics2026` does not follow the course convention `topics2026-<citekey>` suggested in `CONTRIBUTING.md`. If course-staff review wants the convention enforced, rename to `topics2026-aiyagari1998` on next use; otherwise keep the existing session so the accumulated server-side context is preserved.
-5. **Update the `index.md` frontmatter** for `tier: formalized` once items 1–3 above are merged. CI will then enforce the Formalized gate (file existence, AGENTS.md six-section structure, symbol-table heuristic, perch-name keyword check, YAML parse).
+5. **Update the `index.md` frontmatter** for `tier: formalized` once a maintainer confirms Formalized-tier acceptance (CI Formalized gate passes on main plus substantive approval).
 
 ## Workflow reminders
 
